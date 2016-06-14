@@ -1,5 +1,7 @@
 Example React application built with [React Horizon connector](https://github.com/roman01la/react-horizon) to horizon.io realtime backend.
 
+<img src="screenshot.png" width="460" />
+
 ## How to run
 1. Make sure you have installed RethinkDB and Horizon's CLI
 2. Clone this repository
