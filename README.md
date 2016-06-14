@@ -1,5 +1,6 @@
 Example React application built with [React Horizon connector](https://github.com/roman01la/react-horizon) to horizon.io realtime backend.
 
+It is a simple movie tickets online booking application which allows you to see seats availibility in realtime.
 <img src="screenshot.png" width="460" />
 
 ## How to run
