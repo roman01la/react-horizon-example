@@ -11,6 +11,14 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
     flexDirection: 'column'
+  },
+  btn: {
+    border: 'none',
+    padding: '6px 10px',
+    borderRadius: 2,
+    fontSize: 14,
+    color: '#242424',
+    marginTop: 30
   }
 }
 
@@ -70,13 +78,14 @@ class App extends Component {
   render() {
 
     const { totalPrice, rowLn } = this.state
-    const { uuid, allSeats, takeSeat } = this.props
+    const { uuid, allSeats, takeSeat, resetSeats } = this.props
 
     return (
       <div style={styles.container}>
         <Screen />
         <Seats seats={allSeats} rowLn={rowLn} uuid={uuid} onSelect={this._handleSeatSelect} />
         <Total>{totalPrice}</Total>
+        <button style={styles.btn} onClick={() => resetSeats(allSeats, 4, rowLn)}>reset seats</button>
       </div>
     )
   }
@@ -98,6 +107,11 @@ export default connect(App, {
   },
   mutations: {
     takeSeat: (hz) => (seat) => hz('seats').upsert(seat),
+    resetSeats: (hz) => (seats, rows, colls) => hz('seats').upsert(seats.map((seat) => {
+      seat.state = 'free';
+      seat.uuid = null;
+      return seat;
+    })),
     generateSeats: (hz) => (rows, colls) => hz('seats').store(generateSeats(rows, colls))
   }
 })
